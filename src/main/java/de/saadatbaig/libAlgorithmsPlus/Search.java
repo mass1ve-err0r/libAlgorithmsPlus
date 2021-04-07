@@ -6,6 +6,8 @@
  */
 package de.saadatbaig.libAlgorithmsPlus;
 
+import java.util.HashSet;
+
 
 public class Search {
 
@@ -30,6 +32,29 @@ public class Search {
             }
 
             return -1;
+        }
+
+        /**
+         * <pre>
+         *     Complexity: O(n+m) -> max(O(n) + O(m))
+         * </pre>
+         * Check if a pair of values exists within inputArray1 and inputArray2 so the targetValue can be calculated.
+         * @param inputArray1 First source.
+         * @param inputArray2 Second source.
+         * @param targetValue Value to find pair for.
+         * @return true if a pair exists, else false.
+         */
+        public static boolean doesSumExist(int[] inputArray1, int[] inputArray2, int targetValue) {
+            HashSet<Integer> complements = new HashSet<>();
+
+            for (int i : inputArray1) {
+                complements.add((targetValue - i));
+            }
+            for (int i : inputArray2) {
+                if (complements.contains(i)) { return true; }
+            }
+
+            return false;
         }
 
         /* End */
